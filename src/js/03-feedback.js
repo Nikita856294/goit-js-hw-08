@@ -2,7 +2,7 @@ import throttle from 'lodash.throttle';
 
 const formRef = document.querySelector('.feedback-form');
 const FEEDBACK_FORM_STATE = 'feedback-form-state';
-const data = {
+let data = {
   email: '',
   message: '',
 };
@@ -12,6 +12,10 @@ formRef.addEventListener('submit', e => {
   const formData = new FormData(formRef);
   formData.forEach((value, name) => (formData[name] = value));
   console.log(formData);
+  data = {
+    email: '',
+    message: '',
+  };
   e.currentTarget.reset();
   localStorage.removeItem(FEEDBACK_FORM_STATE);
 });
